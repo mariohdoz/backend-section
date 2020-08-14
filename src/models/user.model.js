@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const { compareSync, hashSync, genSaltSync, hash } = require('bcrypt');
 
-const UserSchema = new Schema({
+let UserSchema = new Schema({
     name: {type: String, required: true},
     username: {type: String, required: true},
     password: {type: String, required: true}
@@ -28,4 +28,8 @@ UserSchema.methods.toJSON = function() {
     return user;
 }
 
-module.exports = mongoose.Schema("User", UserSchema);
+UserSchema.methods.comparePasswords = (password) => {
+    return compareSync(password, this.password);
+}
+
+module.exports = mongoose.model("User", UserSchema);
