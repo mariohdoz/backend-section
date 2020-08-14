@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { compareSync, hashSync, genSaltSync, hash } = require('bcrypt');
+const { compareSync, hashSync, genSaltSync } = require('bcrypt');
 
 let UserSchema = new Schema({
     name: {type: String, required: true},
