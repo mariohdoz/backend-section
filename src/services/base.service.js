@@ -68,9 +68,9 @@ class BaseService {
             throw error;
         }
 
-        return await this.delete(id);
-
-
+        await this.delete(id);
+        
+        return true; 
     }
 
 
