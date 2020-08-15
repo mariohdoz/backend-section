@@ -6,7 +6,7 @@ const config = require('../config/index.config')
 const app = require('./index')
 
 // Servicios
-const { HomeService } = require('../services/index.services');
+const { HomeService, CommentsService, IdeaService, UserService } = require('../services/index.services');
 
 // Controladores
 const { HomeController } = require('../controllers/index.controllers')
@@ -19,7 +19,8 @@ const Routes = require('../routes/index');
 const { User, Idea, Comment } = require('../models/index.model')
 
 // Repositorios
-const { CommentRepository, IdeaRepository, UserRepository } = require('../repositories/index.repositories')
+const { CommentRepository, IdeaRepository, UserRepository } = require('../repositories/index.repositories');
+const CommentService = require('../services/comment.service');
 
 container
     .register({
@@ -28,7 +29,10 @@ container
         config: asValue(config)
     })
     .register({
-        HomeService: asClass(HomeService).singleton() 
+        HomeService: asClass(HomeService).singleton(),
+        UserService: asClass(UserService).singleton(),
+        IdeaService: asClass(IdeaService).singleton(),
+        CommentService: asClass(CommentService).singleton() 
     })
     .register({
         HomeController: asClass(HomeController.bind(HomeController)).singleton()
