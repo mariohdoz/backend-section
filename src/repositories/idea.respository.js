@@ -3,7 +3,7 @@ let _idea = null;
 
 class IdeaRepository extends BaseRepository {
 
-    constructor(Idea){
+    constructor({Idea}){
         super(Idea);
         _idea = Idea;
     }

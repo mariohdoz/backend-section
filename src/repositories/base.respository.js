@@ -1,8 +1,7 @@
-
 class BaseRepository{
 
     constructor(model){
-        $this.model = model;
+        this.model = model;
     }
 
     async get(id){
@@ -22,7 +21,8 @@ class BaseRepository{
     }
 
     async delete(id){
-        return await this.model.findByIdAndDelete(id);
+        await this.model.findByIdAndDelete(id);
+        return true;
     }
 
 }
