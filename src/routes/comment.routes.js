@@ -5,7 +5,7 @@ module.exports = function ({ CommentController }) {
 
     router.get(":id_idea", CommentController.create);
     router.get("/:id_comment/unique", CommentController.get);
-    router.get("/:id_idea/idea", CommentController.getIdeasComments);
+    router.get("/:id_idea/idea", CommentController.getIdeaComment);
     router.patch("/:id_comment", CommentController.update);
     router.delete("/:id_comment", CommentController.delete);
 
