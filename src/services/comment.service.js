@@ -1,13 +1,14 @@
 const BaseService = require('./base.service');
+const { CommentRepository } = require('../repositories/index.repositories');
 let _commentRepository = null; 
 let _ideaRepository = null; 
 
 class CommentService extends BaseService {
 
-    constructor(CommmentRepository, IdeaRepository) {
-        super(CommmentRepository);
-        _commentRepository = CommentService; 
-        _ideaRepository = CommentService; 
+    constructor({CommentRepository, IdeaRepository}) {
+        super(CommentRepository);
+        _commentRepository = CommentRepository; 
+        _ideaRepository = IdeaRepository; 
     }
 
     async getIdeaComment(id_idea){

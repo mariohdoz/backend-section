@@ -7,7 +7,7 @@ class BaseService {
     async get(id) {
 
         if (!id) {
-            const error =  new error();
+            const error =  new Error();
             error.status  =  400; 
             error.message = 'ID must be send'
             throw error; 
@@ -16,7 +16,7 @@ class BaseService {
         const currentEntity = await this.repository.get(id);
 
         if (!currentEntity) {
-            const error = new error();
+            const error = new Error();
             error.status = 404;
             error.message = "Entity does not found ";
             throw error; 
@@ -39,7 +39,7 @@ class BaseService {
     async update(id, entity){
 
         if (!id) {
-            const error = new error();
+            const error = new Error();
             error.status = 400;
             error.message = "ID must be send";
             throw error;
@@ -49,7 +49,7 @@ class BaseService {
 
 
         if (!currentEntity) {
-            const error = new error();
+            const error = new Error();
             error.status = 404;
             error.message = "Entity does not found ";
             throw error; 
@@ -62,15 +62,13 @@ class BaseService {
     async delete(id){
         
         if (!id) {
-            const error = new error();
+            const error = new Error();
             error.status = 400;
             error.message = "ID must be send";
             throw error;
         }
 
-        await this.delete(id);
-        
-        return true; 
+        return await this.repository.delete(id); 
     }
 
 

@@ -3,7 +3,7 @@ let _ideaRepository = null;
 
 class IdeaService extends BaseService{
 
-    constructor(IdeaRepository) {
+    constructor({IdeaRepository}) {
         super(IdeaRepository);
         _ideaRepository = IdeaRepository;
     }
