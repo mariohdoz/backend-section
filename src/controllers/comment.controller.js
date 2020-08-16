@@ -1,7 +1,8 @@
 let _commentService = null;
 
 class CommentController {
-    constructor(CommentService) {
+    
+    constructor({CommentService}) {
         _commentService = CommentService;
     }
 
