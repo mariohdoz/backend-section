@@ -1,5 +1,6 @@
-const { model } = require("mongoose");
-
 module.exports = {
-    HomeRoutes: require('./home.routes')
+    HomeRoutes: require('./home.routes'),
+    UserRoutes: require('./user.routes'),
+    IdeaRoutes: require('./idea.routes'),
+    CommentRoutes: require('./comment.routes'),
 };
