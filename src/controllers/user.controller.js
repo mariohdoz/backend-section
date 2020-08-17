@@ -7,30 +7,26 @@ class UserController {
     }
     
     async get(req, res ){
-        const { userId } = req.params; 
-        const user = await _userService.get(userId);
+        const { user_id } = req.params; 
+        const user = await _userService.get(user_id);
         return res.send(user);
     }
 
     async getAll(req, res ){
-
-        console.log("Entrò")
-        console.log(_userService)
-
         const users = await _userService.getAll();
         return res.send(users);
     }
 
     async update(req, res ){
         const { body } = req; 
-        const { userId } = req.params; 
-        const updated_user = await _userService.update(userId, body);
+        const { user_id } = req.params; 
+        const updated_user = await _userService.update(user_id, body);
         return res.send(updated_user);
     }
 
     async delete(req, res ){
-        const { userId } = req.params; 
-        const deleted_user = await _userService.delete(userId);
+        const { user_id } = req.params; 
+        const deleted_user = await _userService.delete(user_id);
         return res.send(deleted_user);
     }
 
