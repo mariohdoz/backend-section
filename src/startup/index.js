@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 let _express = null;
 let _config = null; 
@@ -11,6 +12,12 @@ class Server{
 
     start(){
         return new Promise(resolve => {
+
+            // parse application/x-www-form-urlencoded
+            _express.use(bodyParser.urlencoded({ extended: true }));
+            // parse application/json
+            _express.use(bodyParser.json());
+
             _express.listen(_config.PORT, () => {
                 console.log(`${_config.APPLICATION_NAME} API running on port ${_config.PORT}`);
             });
