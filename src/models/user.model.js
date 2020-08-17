@@ -8,7 +8,7 @@ let UserSchema = new Schema({
     password: {type: String, required: true}
 });
 
-UserSchema.pre('save', async (next) => {
+UserSchema.pre('save', async function(next){
     const user = this
 
     if (!user.isModified("password")){
@@ -28,7 +28,7 @@ UserSchema.methods.toJSON = function() {
     return user;
 }
 
-UserSchema.methods.comparePasswords = (password) => {
+UserSchema.methods.comparePassword = function(password){
     return compareSync(password, this.password);
 }
 
