@@ -6,13 +6,13 @@ const config = require('../config/index.config')
 const app = require('./index')
 
 // Servicios
-const { HomeService, CommentService, IdeaService, UserService } = require('../services/index.services');
+const { HomeService, CommentService, IdeaService, UserService, AuthService } = require('../services/index.services');
 
 // Controladores
-const { HomeController, CommentController, IdeaController, UserController } = require('../controllers/index.controllers')
+const { HomeController, CommentController, IdeaController, UserController, AuthController } = require('../controllers/index.controllers')
 
 // Rutas 
-const { HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes } = require('../routes/index.routes');
+const { HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes, AuthRoutes } = require('../routes/index.routes');
 const Routes = require('../routes/index');
 
 // Modelos
@@ -31,19 +31,22 @@ container
         HomeService: asClass(HomeService).singleton(),
         UserService: asClass(UserService).singleton(),
         IdeaService: asClass(IdeaService).singleton(),
-        CommentService: asClass(CommentService).singleton() 
+        CommentService: asClass(CommentService).singleton(),
+        AuthService: asClass(AuthService).singleton()
     })
     .register({
         HomeController: asClass(HomeController.bind(HomeController)).singleton(),
         CommentController: asClass(CommentController.bind(CommentController)).singleton(),
         IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
-        UserController: asClass(UserController.bind(UserController)).singleton()
+        UserController: asClass(UserController.bind(UserController)).singleton(),
+        AuthController: asClass(AuthController.bind(AuthController)).singleton()
     })
     .register({
         HomeRoutes: asFunction(HomeRoutes).singleton(),
         UserRoutes: asFunction(UserRoutes).singleton(),
         IdeaRoutes: asFunction(IdeaRoutes).singleton(),
-        CommentRoutes: asFunction(CommentRoutes).singleton()
+        CommentRoutes: asFunction(CommentRoutes).singleton(),
+        AuthRoutes: asFunction(AuthRoutes).singleton(),
     })
     .register({
         User: asValue(User),
