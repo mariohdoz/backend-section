@@ -49,8 +49,6 @@ class AuthService {
 
         const token = JWTHelper.generateToken(userToEncode);
 
-        console.log(token);
-
         return { token, user: userExist };
 
     }

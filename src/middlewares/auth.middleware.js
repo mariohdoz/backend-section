@@ -11,7 +11,8 @@ let validateToken = (req, res, next) => {
         throw error; 
     }
 
-    jwt.verify(token, {JWT_SECRET}, (err, decodedToken) =>{
+    jwt.verify(token, JWT_SECRET, (err, decodedToken) =>{
+
         if(err){
             const error = new Error();
             error.status = 401;

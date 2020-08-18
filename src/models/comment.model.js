@@ -9,7 +9,8 @@ const CommentSchema = new Schema({
     required: true,
     autopopulate: true,
   }
-});
+}, { timestamps: { createdAt: true, updatedAt: true } }
+);
 
 CommentSchema.plugin(require("mongoose-autopopulate"));
 
