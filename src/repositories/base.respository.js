@@ -8,8 +8,13 @@ class BaseRepository{
         return await this.model.findById(id);
     }
 
-    async getAll(){
-        return await this.model.find();
+    async getAll(pageSize = 5, pageNumber = 0){
+        const skips = pageSize * pageNumber;
+        return await this.model
+                        .find()
+                        .skip(skips)
+                        .limit(pageSize)
+                        .sort('createdAt');
     }
 
     async create(entity){
