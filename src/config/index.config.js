@@ -8,5 +8,6 @@ module.exports = {
     APPLICATION_NAME: process.env.APPLICATION_NAME,
     JWT_SECRET: process.env.JWT_SECRET,
     TOKEN_EXPIRATION: process.env.TOKEN_EXPIRATION,
-    CACHE_KEY: process.env.CACHE_KEY
+    CACHE_KEY: process.env.CACHE_KEY,
+    SWAGGER_PATH: `../config/swagger/${process.env.SWAGGER_DOC}`
 }
