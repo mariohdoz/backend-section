@@ -1,0 +1,25 @@
+version: '3'
+
+services: 
+    api:
+        build: .
+        container_name: node_api
+        environment: 
+            - NODE_ENV=env
+            - PORT=3000
+            - MONGO_URI=mongodb://mongo:27017/test
+            - APPLICATION_NAME=Comparte tu idea
+            - JWT_SECRET=lweoi769d9he
+            - TOKEN_EXPIRATION=30m
+            - CACHE_KEY=ekGpjxjJ8MjyoJXz
+            - SWAGGER_DOC=swaggerPROD
+        volumes: 
+            - '.:/app'
+            - '/app/node_modules'
+        ports: 
+            - "3001:3000"
+        depends_on: 
+            - mongo
+
+    mongo:
+        image: mongo

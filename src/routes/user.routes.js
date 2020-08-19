@@ -7,7 +7,7 @@ const { fcache } = CacheMiddleware;
 module.exports = function({ UserController }) {
 	const router = Router();
 	
-	router.get("/", [parseIn, fcache],UserController.getAll);
+	router.get("/", parseIn, UserController.getAll);
 	router.get("/:user_id", validateToken, UserController.get);
 	router.patch("/:user_id", validateToken, UserController.update);
 	router.delete("/:user_id", validateToken, UserController.delete);
